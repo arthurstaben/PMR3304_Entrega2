@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block title %} 
+  {{ Post.title }} {{Post.year }} 
+{% endblock title %} 
+{% block content %}
+    <h2>Detalhes: {{ Post.title }} ({{ Post.year }})</h2>
+    <li style="list-style-type: none; padding: 0; margin: 0;"><strong>Data de Publicação:</strong> {% if Post.data %}{{ Post.data|date:"d/m/Y" }}{% else %}Data não disponível{% endif %} </li>
+    <section class="dados-de-elenco">
+      <img src="{{ Post.poster_url }}" alt="Poster do {{ Post.title}}" width="600" height="auto" />
+      <ul style="list-style-type: none; padding: 0; margin: 0;">
+        <li><strong>Clube:</strong> {{ Post.title }}</li>
+        <li><strong>Ano:</strong> {{ Post.year }}</li>
+        <li><strong>Goleiro:</strong> {{ Post.goleiro }}</li>
+        <li><strong>Defesa:</strong> {{ Post.defesa }}</li>
+        <li><strong>Meio-Campo:</strong> {{ Post.meio }}</li>
+        <li><strong>Ataque:</strong> {{ Post.ataque }}</li>
+      </ul>
+      <div class="conteudo" style="list-style-type: none; padding: 0; margin: 0;">
+        <li>--------</li>
+        <li>--------</li>
+        {{ Post.conteudo|safe }}
+      </div>
+      <div style="list-style-type: none; padding: 0; margin: 0;">
+        <li>--------</li>
+        <li>--------</li>
+        <a href="{% url 'posts:update' Post.id %}">Editar</a>
+        <a href="{% url 'posts:delete' Post.id %}">Apagar</a>
+      </div>
+    </section>
+{% endblock content %}

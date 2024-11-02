@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Inserir Novo Elenco</h2>
+<form method="POST" action="{% url 'posts:create' %}">
+  {% csrf_token %}
+  <p>
+    <strong><label for="id_title">Clube:</label></strong>
+    <input type="text" name="title" id="id_title" />
+  </p>
+  <p>
+    <strong><label for="id_year">Ano:</label></strong>
+    <input type="number" name="year" id="id_year" />
+  </p>
+  <p>
+    <strong><label for="id_conteudo">Conteúdo:</label></strong>
+    <input type="text" name="conteudo" id="id_conteudo" />
+  </p>
+  <p>
+    <strong><label for="id_goleiro">Goleiro:</label></strong>
+    <input type="text" name="goleiro" id="id_goleiro" />
+  </p>
+  <p>
+    <strong><label for="id_defesa">Defesa:</label></strong>
+    <input type="text" name="defesa" id="id_defesa" />
+  </p>
+  <p>
+    <strong><label for="id_meio">Meio-Campo:</label></strong>
+    <input type="text" name="meio" id="id_meio" />
+  </p>
+  <p>
+    <strong><label for="id_ataque">Ataque:</label></strong>
+    <input type="text" name="ataque" id="id_ataque" />
+  </p>
+  <p>
+    <strong><label for="id_poster_url">URL do Poster:</label></strong>
+    <input type="url" name="poster_url" id="id_poster_url" />
+  </p>
+  <button type="submit">Criar</button>
+</form>
+
+{% endblock content %}

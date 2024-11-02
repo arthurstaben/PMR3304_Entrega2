@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+<h2>Elencos</h2>
+<section>
+  <p>
+    Gostaria de incluir outro esquadrão imortal?
+    <a href="{% url 'posts:create' %}">Novo Elenco</a>
+  </p>
+</section>
+{% if Post_list %}
+<section class="lista-de-cards">
+  {% for Post in Post_list %}
+  <article class="card">
+    <a href="{% url 'posts:detail' Post.id %}"
+      ><img src="{{ Post.poster_url }}" alt="Poster do {{ Post.title}}"
+    /></a>
+    <p><strong>{{ Post.title }}</strong> ({{ Post.year }})</p>
+  </article>
+  {% endfor %}
+</section>
+{% else %}
+<p>Não foi encontrado nenhum elenco.</p>
+{% endif %} {% endblock content %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Atualizar Dados do Elenco {{ Post.title }} ({{ Post.year }})</h2>
+<form method="post" action="{% url 'posts:update' Post.id%}">
+  {% csrf_token %}
+  <p>
+    <strong><label for="id_title">Clube:</label></strong>
+    <input type="text" name="title" id="id_title" value="{{ Post.title }}" />
+  </p>
+  <p>
+    <strong><label for="id_year">Ano:</label></strong>
+    <input type="number" name="year" id="id_year" value="{{ Post.year }}" />
+  </p>
+  <p>
+    <strong><label for="id_conteudo">Conteúdo:</label></strong>
+    <input type="text" name="conteudo" id="id_conteudo" value="{{ Post.conteudo }}" />
+  </p>
+  <p>
+    <strong><label for="id_goleiro">Goleiro:</label></strong>
+    <input type="text" name="goleiro" id="id_goleiro" value="{{ Post.goleiro }}" />
+  </p>
+  <p>
+    <strong><label for="id_defesa">Defesa:</label></strong>
+    <input type="text" name="defesa" id="id_defesa" value="{{ Post.defesa }}" />
+  </p>
+  <p>
+    <strong><label for="id_meio">Meio-Campo:</label></strong>
+    <input type="text" name="meio" id="id_meio" value="{{ Post.meio }}" />
+  </p>
+  <p>
+    <strong><label for="id_ataque">Ataque:</label></strong>
+    <input type="text" name="ataque" id="id_ataque" value="{{ Post.ataque }}" />
+  </p>
+  <p>
+    <strong><label for="id_poster_url">URL do Poster:</label></strong>
+    <input type="url" name="poster_url" id="id_poster_url" value="{{ Post.poster_url }}" />
+  </p>
+  <button type="submit">Atualizar</button>
+</form>
+{% endblock content %}
