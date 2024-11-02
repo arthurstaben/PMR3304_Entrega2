@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<form action="{% url 'posts:delete' Post.id %}" method="post">
+<form action="{% url 'posts:delete' post.id %}" method="post">
   {% csrf_token %}
   <p>
     Você tem certeza que deseja apagar o elenco "{{ Post.title }} ({{
