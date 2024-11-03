@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -91,13 +91,13 @@ class PostDetailView(DetailView):
 
 class PostCreateView(CreateView):
     model = Post
-    fields = ['title', 'year', 'conteudo', 'goleiro', 'defesa', 'meio', 'ataque', 'poster_url']
+    form_class = PostForm
     template_name = 'posts/create.html'
     success_url = reverse_lazy('posts:index')
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ['title', 'year', 'conteudo', 'goleiro', 'defesa', 'meio', 'ataque', 'poster_url']
+    form_class = PostForm
     template_name = 'posts/update.html'
     success_url = reverse_lazy('posts:index')
 
@@ -123,3 +123,12 @@ def create_comment(request, Post_id):
     
     context = {'form': form, 'post': post}  
     return render(request, 'posts/comment.html', context)
+
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'posts/category_list.html', {'categories': categories})
+
+def category_detail(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    posts = category.posts.all()
+    return render(request, 'posts/category_detail.html', {'posts': posts, 'category': category})

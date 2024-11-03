@@ -18,6 +18,7 @@ class PostForm(ModelForm):
         fields = [
             'title',
             'year',
+            'categories',
             'conteudo',
             'goleiro',
             'defesa',
@@ -26,8 +27,9 @@ class PostForm(ModelForm):
             'poster_url',
         ]
         labels = {
-            'name': 'Clube',
+            'title': 'Clube',
             'year': 'Ano',
+            'categories': 'Categorias',
             'conteudo': 'Conteúdo',
             'goleiro': 'Goleiro',
             'defesa': 'Defesa',

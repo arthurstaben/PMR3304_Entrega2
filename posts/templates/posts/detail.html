@@ -5,6 +5,11 @@
 {% block content %}
     <h2>Detalhes: {{ Post.title }} ({{ Post.year }})</h2>
     <li style="list-style-type: none; padding: 0; margin: 0;"><strong>Data de Publicação:</strong> {% if Post.data %}{{ Post.data|date:"d/m/Y" }}{% else %}Data não disponível{% endif %} </li>
+    <p><strong>Categorias:</strong>
+      {% for category in Post.categories.all %}
+          <a href="{% url 'posts:category_detail' category.id %}">{{ category.name }}</a>{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
     <section class="dados-de-elenco">
       <img src="{{ Post.poster_url }}" alt="Poster do {{ Post.title}}" width="600" height="auto" />
       <ul style="list-style-type: none; padding: 0; margin: 0;">

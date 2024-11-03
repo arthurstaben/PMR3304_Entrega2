@@ -12,6 +12,7 @@ class Post(models.Model):
     ataque = models.CharField(max_length=700)
     poster_url = models.URLField(max_length=200, null=True) #Poster       
     data = models.DateTimeField(auto_now_add=True) #Data de Postagem
+    categories = models.ManyToManyField('Category', related_name='posts')
     
     def __str__(self):
         return f'{self.title} ({self.year})'
@@ -24,3 +25,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f'"{self.text}" - {self.author.username}'
+    
+    
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
