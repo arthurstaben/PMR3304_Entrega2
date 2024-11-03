@@ -3,9 +3,9 @@ from .temp_data import elencos_i_data
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import render, get_object_or_404
-from .models import Post
-from .forms import PostForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 # def detail_elenco(request, Post_id):
@@ -105,3 +105,21 @@ class PostDeleteView(DeleteView):
     model = Post
     template_name = 'posts/delete.html'
     success_url = reverse_lazy('posts:index')
+
+def create_comment(request, Post_id):
+    post = get_object_or_404(Post, pk=Post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment_author = form.cleaned_data['author']
+            comment_text = form.cleaned_data['text']
+            comment = Comment(Post, author=comment_author, 
+                              text=comment_text,
+                              post=post) 
+            comment.save()
+            return HttpResponseRedirect(reverse('posts:detail', args=(Post_id,)))
+    else:
+        form = CommentForm()
+    
+    context = {'form': form, 'post': post}  
+    return render(request, 'posts/comment.html', context)

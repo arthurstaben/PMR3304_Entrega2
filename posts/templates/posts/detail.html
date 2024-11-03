@@ -27,4 +27,26 @@
         <a href="{% url 'posts:delete' Post.id %}">Apagar</a>
       </div>
     </section>
+    <hr>
+    <section>
+      <header>
+          <h3>Comentários</h3>
+      </header>
+      <ul>
+          {% if Post.comments.all %}
+              {% for comment in Post.comments.all %}
+                  <figure>
+                      <blockquote>
+                          "{{ comment.text }}"
+                      </blockquote>
+                      <figcaption>— {{ comment.author }}</figcaption>
+                  </figure>
+              {% endfor %}
+          {% else %}
+              <p>Ainda não existe nenhum comentário para esse elenco.</p>
+          {% endif %}
+      </ul>
+      <hr>
+      <a href="{% url 'posts:comment' Post.pk %}"><button>Comente</button></a>
+  </section>
 {% endblock content %}

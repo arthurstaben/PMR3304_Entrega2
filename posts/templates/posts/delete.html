@@ -3,8 +3,7 @@
 <form action="{% url 'posts:delete' post.id %}" method="post">
   {% csrf_token %}
   <p>
-    Você tem certeza que deseja apagar o elenco "{{ Post.title }} ({{
-    Post.year }})"?
+    Você tem certeza que deseja apagar o elenco?
   </p>
   <button type="submit">Apagar</button>
 </form>

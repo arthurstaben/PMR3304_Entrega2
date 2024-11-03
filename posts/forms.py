@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Post
+from .models import Post, Comment
 
 # class PostForm(forms.Form):
 #     title = forms.CharField(label='Clube', max_length=100)
@@ -34,4 +34,16 @@ class PostForm(ModelForm):
             'meio': 'Meio-Campo',
             'ataque': 'Ataque',
             'poster_url': 'URL do Poster',
+        }
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            'author',
+            'text',
+        ]
+        labels = {
+            'author': 'Usuário',
+            'text': 'Comentário',
         }
