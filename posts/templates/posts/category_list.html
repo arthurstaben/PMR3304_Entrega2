@@ -2,7 +2,7 @@
 {% block content %}
     <h2>Categorias</h2>
     <section>
-      </section>
+    </section>
     <ul>
         {% for category in categories %}
             <li><a href="{% url 'posts:category_detail' category.id %}">{{ category.name }}</a></li>
