@@ -9,11 +9,30 @@ def create_initial_comments(apps, schema_editor):
     post1 = Post.objects.get(id=1)
     post3 = Post.objects.get(id=3)
 
-    user1, _ = User.objects.get(username="Lucas Araújo", password='password1') 
-    user2, _ = User.objects.get(username="Charles Oliveira", password='password2')
-    user3, _ = User.objects.get(username="Éverton Ribeiro", password='password3')
-    user4, _ = User.objects.get(username="Ticiane Dois", password='password4') 
-    user5, _ = User.objects.get(username="Artur Skull", password='password5')   
+    user1, created = User.objects.get_or_create(username="Lucas Araújo")
+    if created:
+        user1.set_password("password1")
+        user1.save()
+        
+    user2, created = User.objects.get_or_create(username="Charles Oliveira")
+    if created:
+        user2.set_password("password2")
+        user2.save()
+        
+    user3, created = User.objects.get_or_create(username="Éverton Ribeiro")
+    if created:
+        user3.set_password("password3")
+        user3.save()
+        
+    user4, created = User.objects.get_or_create(username="Ticiane Dois")
+    if created:
+        user4.set_password("password4")
+        user4.save()
+        
+    user5, created = User.objects.get_or_create(username="Artur Skull")
+    if created:
+        user5.set_password("password5")
+        user5.save()
 
     Comment.objects.create(
         post=post1,
