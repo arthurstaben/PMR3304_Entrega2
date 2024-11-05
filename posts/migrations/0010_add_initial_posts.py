@@ -68,7 +68,7 @@ def create_initial_posts(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('posts', '0009_categories.py'),  
+        ('posts', '0009_categories'),  
     ]
     operations = [
         migrations.RunPython(create_initial_posts),
