@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Atualizar Dados do Elenco {{ Post.title }} ({{ Post.year }})</h2>
+<h2>Atualizar Dados do Elenco</h2>
 <form method="post" action="{% url 'posts:update' post.id%}">
   {% csrf_token %}
   {{ form.as_p }}
