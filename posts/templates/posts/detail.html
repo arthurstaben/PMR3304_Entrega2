@@ -42,6 +42,7 @@
               {% for comment in Post.comments.all %}
                   <figure>
                       <blockquote>
+                          {{ comment.data|date:"d/m/Y" }} <hr> 
                           "{{ comment.text }}"
                       </blockquote>
                       <figcaption>— {{ comment.author }}</figcaption>
