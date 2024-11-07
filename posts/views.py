@@ -7,6 +7,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.conf import settings
+from datetime import datetime
+import os, shutil
 
 # def detail_elenco(request, Post_id):
 #     post = get_object_or_404(Post, id=Post_id)

@@ -1,5 +1,5 @@
 from django.db import migrations
-from django.utils import timezone
+from datetime import datetime
 
 def create_initial_posts(apps, schema_editor):
     Post = apps.get_model('posts', 'Post')
@@ -22,7 +22,7 @@ def create_initial_posts(apps, schema_editor):
         meio="Paulo Rodrigues, Gil, Bobô, Zé Carlos",
         ataque="Marquinhos, Charles",
         poster_url="https://imortaisdofutebol.com/wp-content/uploads/2013/04/bahia-campeaobrasileiro-1988.jpg",
-        data=timezone.now()
+        data = datetime(2024, 11, 5, 12, 0), 
     )
     post1.categories.set([category_nacional, category_80]) 
 
@@ -35,7 +35,7 @@ def create_initial_posts(apps, schema_editor):
         meio="Gilberto Silva, Juninho Paulista/Kléberson, Ronaldinho, Rivaldo",
         ataque="Ronaldo",
         poster_url="https://assets.goal.com/images/v3/bltd409161d0ff73650/dfc913ae31fb4634e1959315a005ffe758b91bf2.jpg?auto=webp&format=pjpg&width=3840&quality=60",
-        data=timezone.now()
+        data = datetime(2024, 11, 5, 12, 0), 
     )
     post2.categories.set([category_selecoes])  
 
@@ -48,7 +48,7 @@ def create_initial_posts(apps, schema_editor):
         meio="Casemiro, Kroos, Modrić",
         ataque="Cristiano Ronaldo, Benzema, Isco",
         poster_url="https://pbs.twimg.com/media/E4IuidRVoA4x9wo.jpg",
-        data=timezone.now()
+        data = datetime(2024, 11, 5, 12, 0), 
     )
     post3.categories.set([category_internacional, category_2010])  
 
@@ -61,7 +61,7 @@ def create_initial_posts(apps, schema_editor):
         meio="Xabi Alonso, Gerrard, Luis García, Riise, Kewell",
         ataque="Baroš",
         poster_url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPRpeWtLqEpzoT116E0ltmTibu86jvWpH80A&s",
-        data=timezone.now()
+        data = datetime(2024, 11, 5, 12, 0), 
     )
     post4.categories.set([category_internacional, category_2000])  
 
