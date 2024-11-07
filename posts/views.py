@@ -116,7 +116,7 @@ def create_comment(request, Post_id):
         if form.is_valid():
             comment_author = form.cleaned_data['author']
             comment_text = form.cleaned_data['text']
-            comment = Comment(Post, author=comment_author, 
+            comment = Comment(author=comment_author, 
                               text=comment_text,
                               post=post) 
             comment.save()
